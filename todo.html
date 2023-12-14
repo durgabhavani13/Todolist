@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>To-Do List</title>
+  <style>
+    body {
+      color: white;
+      background-color: greenyellow;
+      /*background-image: url(https://th.bing.com/th/id/OIP.ZuIfPH52Cj22y8EKVFS6QQHaFV?pid=ImgDet&rs=1);
+      background-repeat: no-repeat, no-repeat;
+      background-size: 100% 100%;*/
+    }
+
+    input[type=text] {
+      background-color: gray;
+      color: white;
+    }
+
+    input[type=text]:hover {
+      background-color: black;
+      color: white;
+    }
+
+    ul {
+      padding: 10px;
+      background-color: rgb(81, 81, 215);
+      margin: 50px 500px;
+      border-radius: 5px;
+      box-shadow: 2px 5px rgb(102, 102, 193);
+      list-style-type: none;
+    }
+
+    div {
+      padding: 10px;
+      background-color: red;
+      margin: 50px 500px;
+      border-radius: 5px;
+      box-shadow: 2px 5px rgb(179, 93, 93);
+    }
+
+    button {
+      color: white;
+      background-color: black;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: grey;
+    }
+    h1{
+      color:darkblue;
+text-shadow: 2px 2px rgb(73, 73, 184);    }
+     </style>
+</head>
+
+<body>
+  <center><h1>To-Do List</h1>
+    <div>
+      <form>
+        <input type="text" id="taskInput" placeholder="Enter to do...">
+        <button type="button" onclick="addlist()">Add List</button>
+      </form>
+    </div>
+  </center>
+  <ul id="taskList">
+  </ul>
+  <script>
+    function addlist() {
+      var taskInput = document.getElementById("taskInput");
+      var taskList = document.getElementById("taskList");
+      var newTask = document.createElement("li");
+      newTask.innerHTML = taskInput.value;
+      taskList.appendChild(newTask);
+      taskInput.value = "";
+      //create done and remove buttons and also give styling of them 
+      var btn1 = document.createElement("button");
+      btn1.style.marginLeft="20%";
+      btn1.innerText = "Done";
+      btn1.addEventListener("click", function () {
+        newTask.style.textDecoration = "line-through";
+        newTask.style.textDecorationColor="black";
+      })
+      var btn2 = document.createElement("button");
+      btn2.style.marginLeft="8%";
+
+      btn2.innerText = "Remove";
+      btn2.addEventListener("click", function () {
+        newTask.remove();
+
+      })
+      //appending on listitem(newtask) done and remove buttons 
+      newTask.appendChild(btn1);
+      newTask.appendChild(btn2);
+
+    }
+  </script>
+</body>
+
+</html>
